@@ -1,5 +1,5 @@
 @if (isAdding) {
-    <app-add-task/>
+    <app-add-task (openDialog)="onAddTask()" (addTask)="taskAdded($event)"/>
 }
 <section id="tasks">
     <header>
@@ -9,9 +9,9 @@
         </menu>
     </header>
     <ul>
-        @for (task of filteredTasks; track task.id) {
+        @for (task of getSelectedUserTasks(); track task.id) {
             <li>
-                <app-task [task]="task" (complete)="markComplete($event)"/>
+                <app-task [task]="task"/>
             </li> 
         }
     </ul>
